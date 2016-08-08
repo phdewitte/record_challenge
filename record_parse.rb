@@ -8,20 +8,17 @@
 # The comma-delimited file looks like this:
 # LastName, FirstName, Gender, FavoriteColor, DateOfBirth
 
+class FileParser
 
-require 'csv'
-
-class CSVParser
-
-  attr_reader :csv_entries
+  attr_reader :file_entries
 
   def initialize
-    @csv_entries = []
+    @file_entries = []
   end
 
-  def read_csv(file)
-    CSV.foreach(file) do |csv_row|
-      csv_entries << csv_row
+  def read_file(filename)
+    File.foreach(filename) do |row|
+      file_entries << row
     end
   end
 
