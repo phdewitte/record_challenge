@@ -1,3 +1,0 @@
-LastName,FirstName,Gender,FavoriteColor,DateOfBirth
-Waits,Tom,male,red,1949-12-07
-Piaf,Edith,female,black,1915-12-19
