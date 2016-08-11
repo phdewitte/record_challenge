@@ -1,4 +1,4 @@
-require_relative 'artist'
+require_relative '../artist'
 
 describe Artist do
   let(:artist) { Artist.new(first_name: "Hank", last_name: "Williams", gender: "Male", fav_color: "Brown", birthdate: "1923-09-17") }
