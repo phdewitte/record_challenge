@@ -1,0 +1,5 @@
+Waits, Tom, male, red, 1949-12-07
+Piaf | Edith | female | black | 1915-12-19
+Waronker, Joey, male, yellow, 1969-20-05
+Gilberto, Bebel, female, orange, 1966-12-05
+Wilkenfeld | Tal | female | brown | 1986-02-12
