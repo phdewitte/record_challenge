@@ -25,6 +25,12 @@ describe Artist do
     end
   end
 
+  context "#parsed_bday" do
+    it "parses the birthdate string" do
+      expect(artist.parsed_bday).to eq Date.parse(artist.birthdate)
+    end
+  end
+
   context "#formatted_bday" do
     it "displays the artist's birthdate in a proper format" do
       expect(artist.formatted_bday).to eq "17 September, 1923"
