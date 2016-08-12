@@ -1,4 +1,4 @@
-require_relative 'artist'
+require_relative '../artist'
 
 describe Artist do
   let(:artist) { Artist.new(first_name: "Hank", last_name: "Williams", gender: "Male", fav_color: "Brown", birthdate: "1923-09-17") }
@@ -22,6 +22,12 @@ describe Artist do
 
     it "assigns the artist a birthdate" do
       expect(artist.birthdate).to eq "1923-09-17"
+    end
+  end
+
+  context "#parsed_bday" do
+    it "parses the birthdate string" do
+      expect(artist.parsed_bday).to eq Date.parse(artist.birthdate)
     end
   end
 

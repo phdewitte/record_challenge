@@ -12,8 +12,12 @@ class Artist
     @birthdate = artist_attributes[:birthdate]
   end
 
+  def parsed_bday
+    Date.parse(@birthdate)
+  end
+
   def formatted_bday
-    Date.parse(@birthdate).strftime('%e %B, %Y')
+    parsed_bday.strftime('%e %B, %Y')
   end
 
   def display_info
