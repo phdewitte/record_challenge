@@ -27,14 +27,24 @@ describe ArtistCollection do
       expect(collection.sort_by_gender.first).to be annie
     end
 
-    it "sorts the artists in the collection by last name next" do
+    it "sorts the artists in the collection by last names next" do
       expect(collection.sort_by_gender.last).to be hank
     end
   end
 
   context "#sort_by_birthdate" do
-    it "sorts artists in the collection by their birthdate" do
+    it "sorts artists in the collection by their birthdates" do
       expect(collection.sort_by_birthdate.first).to be django
+    end
+  end
+
+  context "#sort_by_last_name" do
+    it "sorts artists in the collection by their last names (first position)" do
+      expect(collection.sort_by_last_name.last).to be annie
+    end
+
+    it "sorts artists in the collection by their last names (last position)" do
+      expect(collection.sort_by_last_name.first).to be hank
     end
   end
 
