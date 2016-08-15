@@ -1,4 +1,4 @@
-require_relative 'artist'
+require_relative 'record'
 
 module RecordParser
 
@@ -11,17 +11,17 @@ module RecordParser
   end
 
   def self.read_names_from_file(filename)
-    artist_entries = []
+    record_entries = []
     File.foreach(filename) do |row|
-      artist_attributes = self.attribute_separator(row)
-      artist_entries << Artist.new(
-        first_name: artist_attributes[0],
-        last_name: artist_attributes[1],
-        gender: artist_attributes[2],
-        fav_color: artist_attributes[3],
-        birthdate: artist_attributes[4])
+      record_attributes = self.attribute_separator(row)
+      record_entries << Record.new(
+        last_name: record_attributes[0],
+        first_name: record_attributes[1],
+        gender: record_attributes[2],
+        fav_color: record_attributes[3],
+        birthdate: record_attributes[4])
     end
-    p artist_entries
+    record_entries
   end
 
 end
