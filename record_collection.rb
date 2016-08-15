@@ -9,7 +9,7 @@ class RecordCollection
   end
 
   def all
-    records
+    @records
   end
 
   def sort_by_gender

@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'rack'
 gem 'grape'
 
-group :test do
+group :development, :test do
   gem 'airborne'
   gem 'rspec'
 end

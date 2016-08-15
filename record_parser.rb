@@ -24,6 +24,16 @@ module RecordParser
     record_entries
   end
 
+  def self.save_name_to_file(filename, record_array)
+    File.open(filename, mode='w') do |row|
+      row << "last_name, first_name, gender, fav_color, birthdate\n"
+      record_array.each do |record|
+        row << record + "\n"
+      end
+    end
+  end
+
 end
 
-RecordParser.read_names_from_file('fixtures/artists.txt')
+# RecordParser.read_names_from_file('fixtures/artists.txt')
+# RecordParser.save_name_to_file('fixtures/test_target.txt', 'bill, jones, male, blue, 1985-06-18')
