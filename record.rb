@@ -1,6 +1,6 @@
 require 'date'
 
-class Artist
+class Record
 
   attr_reader :first_name, :last_name, :gender, :fav_color, :birthdate
 
