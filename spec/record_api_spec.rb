@@ -1,3 +1,4 @@
+require 'rack'
 require 'rack/test'
 
 require_relative '../record_api'
@@ -9,7 +10,7 @@ describe Recordizer::API do
     Recordizer::API
   end
 
-  context 'get collection of all records' do
+  context 'GET collection of all records' do
     it 'responds with a 200 ok status' do
       get '/api/records/record_collection'
       expect(last_response.status).to eq 200
