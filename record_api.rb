@@ -8,16 +8,26 @@ module Recordizer
   class API < Grape::API
     format :json
 
+    helpers do
+      def format_json(record_array)
+        { "record_info" => record_array.map {|obj| obj.to_json} }
+      end
+    end
+
     before do
-      records = RecordParser.read_names_from_file('recordizer_endpoint_target.txt')
-      @collection = RecordCollection.new(records: records)
+      records = RecordParser.read_names_from_file('spec/fixtures/artists.txt')
+      @record_collection = RecordCollection.new(records)
     end
 
     resource :records do
-      desc 'Retrieve a list of all the available records'
-      get :collection do
-        @collection.records
+
+
+      desc 'Retrieve a list of all the available records, sorted by gender'
+      get :gender do
+        format_json(@record_collection.sort_by_gender)
       end
+
+
 
       desc 'Post a new record to the collection.'
       params do

@@ -1,4 +1,0 @@
-last_name, first_name, gender, fav_color, birthdate
-Some, Random, Test, Text, Here
-Hendrix | Jimi | Male | Purple | 1948-05-10
-Jones, George, Male, Blue, 1985-06-18
