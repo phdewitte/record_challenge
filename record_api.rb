@@ -20,7 +20,28 @@ module Recordizer
     end
 
     resource :records do
+      desc 'Post a new record to the collection.'
+      params do
+        requires :last_name, type: String, desc: 'Last Name'
+        requires :first_name, type: String, desc: 'First Name'
+        requires :gender, type: String, desc: 'Gender'
+        requires :fav_color, type: String, desc: 'Favorite Color'
+        requires :birthdate, type: String, desc: 'Birthdate (Ex: Year-Month-Date)'
+      end
 
+      post do
+        new_record = Record.create!({
+                  last_name: params[:last_name],
+                  first_name: params[:first_name],
+                  gender: params[:gender],
+                  fav_color: params[:fav_color],
+                  birthdate: params[:birthdate]
+                })
+
+        @record_collection << new_record
+        RecordParser.save_name_to_file('recordizer_endpoint_target.txt', @record_collection)
+        format_json(new_record)
+      end
 
       desc 'Retrieve a list of all the available records, sorted by gender'
       get :gender do
@@ -37,23 +58,6 @@ module Recordizer
         format_json(@record_collection.sort_by_last_name)
       end
 
-      desc 'Post a new record to the collection.'
-      params do
-        requires :last_name, type: String, desc: 'Last Name'
-        requires :first_name, type: String, desc: 'First Name'
-        requires :gender, type: String, desc: 'Gender'
-        requires :fav_color, type: String, desc: 'Favorite Color'
-        requires :birthdate, type: String, desc: 'Birthdate (Ex: Year-Month-Date)'
-      end
-      post do
-        Record.create!({
-          last_name: params[:last_name],
-          first_name: params[:first_name],
-          gender: params[:gender],
-          fav_color: params[:fav_color],
-          birthdate: params[:birthdate]
-        })
-      end
     end
 
   end
