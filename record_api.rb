@@ -27,7 +27,15 @@ module Recordizer
         format_json(@record_collection.sort_by_gender)
       end
 
+      desc 'Retrieve a list of all the available records, sorted by brith date'
+      get :birthdate do
+        p format_json(@record_collection.sort_by_birthdate)
+      end
 
+      desc 'Retrieve a list of all the available records, sorted by last name'
+      get :name do
+        format_json(@record_collection.sort_by_last_name)
+      end
 
       desc 'Post a new record to the collection.'
       params do

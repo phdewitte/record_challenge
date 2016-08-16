@@ -13,7 +13,7 @@ class RecordCollection
   end
 
   def sort_by_birthdate
-    records.sort_by { |record| record.parsed_bday }
+    records.sort_by { |record| record.birthdate }
   end
 
   def sort_by_last_name

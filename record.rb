@@ -25,13 +25,11 @@ class Record
   end
 
   def to_json
-    {
-    first_name: first_name,
+    {first_name: first_name,
     last_name: last_name,
     gender: gender,
     fav_color: fav_color,
-    birthdate: birthdate
-    }
+    birthdate: birthdate}
   end
 
 end

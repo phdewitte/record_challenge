@@ -34,6 +34,3 @@ module RecordParser
   end
 
 end
-
-# RecordParser.read_names_from_file('fixtures/artists.txt')
-# RecordParser.save_name_to_file('fixtures/test_target.txt', 'bill, jones, male, blue, 1985-06-18')
