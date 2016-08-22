@@ -28,7 +28,7 @@ module RecordParser
     File.open(filename, mode='w') do |row|
       row << "last_name, first_name, gender, fav_color, birthdate\n"
       record_array.each do |record|
-        row << record + "\n"
+        row << record
       end
     end
   end

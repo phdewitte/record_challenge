@@ -1,0 +1,2 @@
+last_name, first_name, gender, fav_color, birthdate
+#<Record:0x007fc41a858280>#<Record:0x007fc41a859338>#<Record:0x007fc41a853ed8>#<Record:0x007fc41a853be0>#<Record:0x007fc41a853820>#<Record:0x007fc41a853280>

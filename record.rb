@@ -24,6 +24,10 @@ class Record
     "Name: #{first_name} #{last_name} Gender: #{gender} Favorite Color: #{fav_color} Birthdate: #{formatted_bday}"
   end
 
+  def self.create(artist_attributes)
+    self.new(artist_attributes)
+  end
+
   def to_json
     {first_name: first_name,
     last_name: last_name,
