@@ -7,7 +7,7 @@ require_relative 'record_parser'
 module Recordizer
   class API < Grape::API
     format :json
-    content_type :json, 'application/json'
+    content_type :txt, 'text/plain'
 
     helpers do
       def format_json(record_array)
@@ -16,31 +16,25 @@ module Recordizer
     end
 
     before do
-      records = RecordParser.read_names_from_file('spec/fixtures/artists.txt')
-      record_collection = RecordCollection.new(records)
-      @collection = record_collection.records
+      records = RecordParser.read_names_from_file('recordizer_database.csv')
+      @record_collection = RecordCollection.new(records)
+      @collection = @record_collection.records
     end
 
     resource :records do
-      params do
-        requires :last_name, type: String, desc: 'Last Name'
-        requires :first_name, type: String, desc: 'First Name'
-        requires :gender, type: String, desc: 'Gender'
-        requires :fav_color, type: String, desc: 'Favorite Color'
-        requires :birthdate, type: String, desc: 'Birthdate (Ex: Year-Month-Date)'
-      end
-
       desc 'Post a new record to the collection.'
       post do
+        p params[:record]
+        input_split = RecordParser.attribute_separator(params[:record])
         new_record = Record.create({
-                  last_name: params[:last_name],
-                  first_name: params[:first_name],
-                  gender: params[:gender],
-                  fav_color: params[:fav_color],
-                  birthdate: params[:birthdate]
-                })
+                    last_name: input_split[0],
+                    first_name: input_split[1],
+                    gender: input_split[2],
+                    fav_color: input_split[3],
+                    birthdate: input_split[4]
+          })
         @collection << new_record
-        RecordParser.save_name_to_file('recordizer_database.txt', @collection)
+        RecordParser.save_name_to_file('recordizer_database.csv', @collection)
         format_json(@collection)
       end
 
@@ -51,7 +45,7 @@ module Recordizer
 
       desc 'Retrieve a list of all the available records, sorted by brith date'
       get :birthdate do
-        p format_json(@record_collection.sort_by_birthdate)
+        format_json(@record_collection.sort_by_birthdate)
       end
 
       desc 'Retrieve a list of all the available records, sorted by last name'
@@ -63,5 +57,3 @@ module Recordizer
 
   end
 end
-
-# curl -d '{"first_name": "Patrick", "last_name: "Dude", "gender": "male", "fav_color": "black", "birthdate": "1923-02-02"}' 'http://localhost:9292/records' -H Content-Type:application/json -v
