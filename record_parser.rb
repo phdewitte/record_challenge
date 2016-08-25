@@ -30,6 +30,3 @@ module RecordParser
   end
 
 end
-
-# new object should indeed be created at read, not at write
-# program needs to accept post in the format written for attr attribute_separator

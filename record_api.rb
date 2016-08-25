@@ -24,7 +24,6 @@ module Recordizer
     resource :records do
       desc 'Post a new record to the collection.'
       post do
-        p params[:record]
         input_split = RecordParser.attribute_separator(params[:record])
         new_record = Record.create({
                     last_name: input_split[0],
