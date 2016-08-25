@@ -4,12 +4,8 @@ class RecordCollection
 
   attr_reader :records
 
-  def initialize(records = [])
-    @records = records
-  end
-
-  def all
-    @records
+  def initialize(records_array)
+    @records = records_array
   end
 
   def sort_by_gender
@@ -17,7 +13,7 @@ class RecordCollection
   end
 
   def sort_by_birthdate
-    records.sort_by { |record| record.parsed_bday }
+    records.sort_by { |record| record.birthdate }
   end
 
   def sort_by_last_name
